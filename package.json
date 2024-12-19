@@ -9,7 +9,8 @@
     "format": "prettier --write .",
     "lint": "eslint . ",
     "lint:fix": "eslint . --fix ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/server.ts"
   },
   "packageManager": "pnpm@9.15.0",
   "engineStrict": true,
@@ -21,10 +22,26 @@
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@types/koa": "^2.15.0",
+    "@types/koa-bodyparser": "^4.3.12",
+    "@types/koa-logger": "^3.1.5",
+    "@types/koa-router": "^7.4.8",
+    "@types/koa2-cors": "^2.0.5",
+    "@types/koa__router": "^12.0.4",
     "eslint": "^9.17.0",
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
+  },
+  "dependencies": {
+    "koa": "^2.15.3",
+    "koa-bodyparser": "^4.4.1",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^12.0.0",
+    "koa-router-zod-swagger": "^1.1.1",
+    "koa2-cors": "^2.0.6",
+    "zod": "^3.24.1"
   }
 }
