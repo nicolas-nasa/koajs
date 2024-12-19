@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "allowSyntheticDefaultImports": true,
+      "lib": ["ES2022"],
+      "module": "ES2022",
+      "moduleResolution": "node",
+      "strict": true,
+      "target": "ES2022",
+      "baseUrl": "src", 
+      "paths": {
+         "@infrastructure/*": ["infrastructure/*"],
+         "@service/*": ["services/*"],
+         "@entity/*": ["entities/*"],
+         "@middleware/*": ["middlewares/*"],
+         "@controller/*": ["controllers/*"],
+         "@interface/*": ["interfaces/*"],
+         "@model/*": ["models/*"],
+         "@route/*": ["routes/*"],
+         "@helper/*": ["helpers/*"]
+     },
+    }
+  }
