@@ -20,7 +20,8 @@
     "format": "prettier --write .",
     "lint": "eslint . ",
     "lint:fix": "eslint . --fix ",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "unit:test": "node --import=tsx -r tsconfig-paths/register --test src/**/*.spec.ts",
+    "e2e:test": "node --import=tsx -r tsconfig-paths/register --test src/**/*.e2e.ts",
     "dev": "tsx watch src/server.ts"
   },
   "packageManager": "pnpm@9.15.0",

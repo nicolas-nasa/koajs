@@ -5,7 +5,7 @@ import { DataSource } from 'typeorm';
 const AppDataSource = new DataSource({
   type: 'postgres',
   url: helpers.envs.dataBaseUrl,
-  logging: true,
+  logging: false,
   entities: [User],
   migrations: ['../migrations/*.ts,*.js'],
   subscribers: []

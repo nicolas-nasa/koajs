@@ -4,7 +4,7 @@ import { boolean } from 'zod';
 @Entity('users')
 export class User {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id?: string;
 
   @Column({ type: 'varchar' })
   name: string;
@@ -15,7 +15,7 @@ export class User {
   @Column({ type: 'varchar' })
   role: string;
 
-  @Column({ type: 'boolean', name: 'is_onbording' })
+  @Column({ type: 'boolean', name: 'is_onbording', default: false })
   isOnboarded: boolean;
 
   @Column({
@@ -23,11 +23,11 @@ export class User {
     name: 'created_at',
     default: new Date().toISOString()
   })
-  createdAt: string;
+  createdAt?: string;
 
-  @Column({ type: 'timestamp', name: 'updated_at' })
-  updatedAt: string;
+  @Column({ type: 'timestamp', name: 'updated_at', nullable: true })
+  updatedAt?: string;
 
-  @Column({ type: 'timestamp', name: 'deleted_at' })
-  deletedAt: string;
+  @Column({ type: 'timestamp', name: 'deleted_at', nullable: true })
+  deletedAt?: string;
 }
