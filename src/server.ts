@@ -1,26 +1,30 @@
-import Koa from 'koa'
-import bodyParser from 'koa-bodyparser'
-import cors from 'koa2-cors'
-import logger from 'koa-logger'
-import { KoaRouterSwagger } from 'koa-router-zod-swagger'
-import router from '@route/route'
+import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import cors from 'koa2-cors';
+import logger from 'koa-logger';
+import { KoaRouterSwagger } from 'koa-router-zod-swagger';
+import router from '@route/route';
+import { AppDataSource } from '@infrastructure/db.infrastructure';
 
-const app = new Koa()
+const app = new Koa();
 
-app.use(bodyParser())
+app.use(bodyParser());
 app.use(
   cors({
     origin: '*'
   })
-)
+);
 
-app.use(logger())
+console.log(process.env.APP_DATABASE_URL);
+
+app.use(logger());
 
 //Documentations Swagger
 app.use(
   KoaRouterSwagger(router, {
     routePrefix: 'docs',
-    title: 'Test Api',
+    title: 'documentation',
+    hideTopbar: true,
     swaggerOptions: {
       spec: {
         info: {
@@ -30,8 +34,10 @@ app.use(
       }
     }
   })
-)
+);
 
-app.use(router.routes()).use(router.allowedMethods())
+AppDataSource.initialize();
 
-app.listen(3000)
+app.use(router.routes()).use(router.allowedMethods());
+
+app.listen(3000);

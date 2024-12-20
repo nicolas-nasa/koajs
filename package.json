@@ -2,10 +2,21 @@
   "name": "koajs",
   "version": "1.0.0",
   "description": "simple crud with coajs",
-  "type": "module",
   "main": "src/server.ts",
+  "_moduleAliases": {
+    "@helper": "src/helpers"
+  },
   "scripts": {
-    "preinstall": "npx -y only-allow pnpm",
+    "typeorm": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d ./src/infrastructure/db.infrastructure.ts",
+    "schema:sync": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js schema:sync -d ./src/infrastructure/db.infrastructure.ts",
+    "typeorm:cache": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js cache:clear -d ./src/infrastructure/db.infrastructure.ts",
+    "schema:drop": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d ./src/infrastructure/db.infrastructure.ts",
+    "migration:create": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:create ./src/migrations/schema-update",
+    "migration:generate": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate ./src/migrations/schema-update -d ./src/infrastructure/db.infrastructure.ts",
+    "migration:show": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:show -d ./src/infrastructure/db.infrastructure.ts",
+    "migration:run": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:run -d  ./src/infrastructure/db.infrastructure.ts",
+    "migration:revert": "tsx -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:revert -d ./src/infrastructure/db.infrastructure.ts",
+    "preinstall": "-y only-allow pnpm",
     "format": "prettier --write .",
     "lint": "eslint . ",
     "lint:fix": "eslint . --fix ",
@@ -28,20 +39,27 @@
     "@types/koa-router": "^7.4.8",
     "@types/koa2-cors": "^2.0.5",
     "@types/koa__router": "^12.0.4",
+    "@types/node": "^22.10.2",
     "eslint": "^9.17.0",
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.1"
   },
   "dependencies": {
+    "dotenv": "^16.4.7",
+    "jsonwebtoken": "^9.0.2",
     "koa": "^2.15.3",
     "koa-bodyparser": "^4.4.1",
     "koa-logger": "^3.2.1",
     "koa-router": "^12.0.0",
     "koa-router-zod-swagger": "^1.1.1",
     "koa2-cors": "^2.0.6",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20",
     "zod": "^3.24.1"
   }
 }
