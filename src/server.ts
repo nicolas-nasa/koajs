@@ -15,8 +15,6 @@ app.use(
   })
 );
 
-console.log(process.env.APP_DATABASE_URL);
-
 app.use(logger());
 
 //Documentations Swagger
